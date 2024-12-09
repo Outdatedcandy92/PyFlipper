@@ -1,4 +1,138 @@
-# Project Documentation
+# PyFlipper
+
+## Description
+PyFlipper is a DIY low-cost alternative to the Flipper Zero, built using a Raspberry Pi Zero 2 W and a few additional modules. This project aims to provide similar functionalities to the Flipper Zero, such as wireless communication, NFC, and infrared capabilities, using readily available and affordable components. The project is still in development, and contributions are welcome.
+
+## Table of Contents
+- [Folder Structure](#folder-structure)
+- [Wiring Diagrams](#wiring-diagrams)
+- [Setup](#setup)
+- [Info](#info)
+
+## Folder Structure
+
+```
+PyFlipper/
+│   .gitignore
+│   README.md
+│   requirements.txt
+│   script.py
+│
+├───AppleJuice
+│   │   app.py
+│   │   LICENSE
+│   │   README.md
+│   │
+│   ├───Pair New Device Notifications
+│   │
+│   └───utils
+│           adv_wifi_poc
+│           ble_read_state.py
+│           bluetooth_utils.py
+│
+├───bluetooth
+│       bltscan.py
+│       bltsniffer.py
+│
+├───cc1101
+│       config.py
+│       transmit.py
+│
+├───IR
+│       ir_reciver.py
+│       ir_sender.py
+│
+├───pn532
+│       androidhce.py
+│       formatndef.py
+│       MemDump.py
+│       ndeftoclasssic.py
+│       p2praw.py
+│       readmifare.py
+│       uid.py
+│       updatendef.py
+│
+└───wifi
+        deauth.py
+        macaddr.py
+        wifiscanner.py
+```
+
+## Wiring Diagrams
+
+### CC1101 to Raspberry Pi
+| CC1101 | Raspberry Pi |
+|--------|--------------|
+| VDD    | 3.3V (Pin 1 or 17) |
+| SI     | MOSI (Pin 19) |
+| SO     | MISO (Pin 21) |
+| CSn    | CE0 (Pin 24) |
+| SCLK   | SCLK (Pin 23) |
+| GDO2*  | Any GPIO pin, commonly GPIO25 (Pin 22) |
+| GDO0*  | Any GPIO pin, GPIO24 (Pin 18) recommended |
+| GND    | Ground |
+
+### PN532 (I2C) to Raspberry Pi
+| PN532 | Raspberry Pi |
+|-------|--------------|
+| VCC   | 3.3V (Pin 1 or 17) |
+| GND   | Ground (Pin 6) |
+| SDA   | SDA (Pin 3) |
+| SCL   | SCL (Pin 5) |
+
+### Adafruit 1.8 inch TFT (SPI) to Raspberry Pi
+| TFT   | Raspberry Pi |
+|-------|--------------|
+| VCC   | 3.3V (Pin 1 or 17) |
+| GND   | Ground (Pin 6) |
+| CS    | CE0 (Pin 24) |
+| RST   | Any GPIO pin, commonly GPIO25 (Pin 22) |
+| D/C   | Any GPIO pin, commonly GPIO24 (Pin 18) |
+| MOSI  | MOSI (Pin 19) |
+| SCK   | SCLK (Pin 23) |
+| LED   | 3.3V (Pin 1 or 17) |
+
+### TSOP IR Receiver to Raspberry Pi
+| TSOP IR Receiver | Raspberry Pi |
+|------------------|--------------|
+| VCC              | 3.3V (Pin 1 or 17) |
+| GND              | Ground (Pin 6) |
+| OUT              | GPIO23 (Pin 16) |
+
+### IR LED to Raspberry Pi
+| IR LED | Raspberry Pi |
+|--------|--------------|
+| Anode  | GPIO18 (Pin 12) |
+| Cathode| Ground (Pin 6) |
+
+## Setup
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/Outdatedcandy92/PyFlipper
+    cd PyFlipper
+    ```
+
+2. Create a Python virtual environment:
+    ```sh
+    python -m venv venv
+    ```
+
+3. Activate the virtual environment:
+    ```sh
+    source venv/bin/activate
+    ```
+4. Install requirements:
+    ```sh
+    pip install -r requirements.txt
+    ```
+5. Run the script:
+    ```sh
+    python script.py
+    ```
+
+
+# Info
 
 ## AppleJuice
 
