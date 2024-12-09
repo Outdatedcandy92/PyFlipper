@@ -1,0 +1,13 @@
+argparse
+beautifulsoup4
+bluez
+curses
+npyscreen
+prettytable
+pycryptodome
+pybluez
+requests
+sqlite3
+subprocess
+urllib3
+pn532pi
